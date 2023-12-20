@@ -18,7 +18,6 @@ BASIC_utils="
 	git
 	tree
 	inxi
-	alsa-utils
 	neovim
 	duf
 	speedtest-cli
@@ -37,6 +36,7 @@ SYSTEM_utils="
 	bash-completion
 	python-psutil
 	powertop
+	alsa-utils
 	pipewire
 	pipewire-alsa
 	pipewire-jack
@@ -115,6 +115,7 @@ sudo usermod -a -G wireshark adrian
 sudo systemctl enable apparmor.service
 sudo systemctl enable reflector.timer
 sudo systemctl enable firewalld.service
+sudo systemctl enable cups
 systemctl enable --user pulseaudio.service
 systemctl start --user pulseaudio.service
 systemctl enable --user insync.service
