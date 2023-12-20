@@ -20,7 +20,9 @@ mount /dev/nvme0n1p5 /mnt/home
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/pacman.conf
 
-pacstrap /mnt base linux-lts linux-firmware nano
+reflector -c Germany -a 6 --download-timeout 20 --connection-timeout 20 -l 7 --sort rate --save /etc/pacman.d/mirrorlist
+
+pacstrap /mnt base linux linux-firmware 
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
