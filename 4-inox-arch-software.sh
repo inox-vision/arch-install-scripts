@@ -175,6 +175,6 @@ set up nitrogen.
 
 
 
-light-locker uruchomic
-ustawić wybór linuxa w grub
+# light-locker uruchomic
+# ustawić wybór linuxa w grub
 
