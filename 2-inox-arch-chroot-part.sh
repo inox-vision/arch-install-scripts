@@ -27,7 +27,7 @@ sleep 2
 # BASIC INSTAL #
 ################
 
-pacman -S reflector
+pacman -S reflector --noconfirm
 reflector -c Germany -a 6 --download-timeout 20 --connection-timeout 20 -l 7 --sort rate --save /etc/pacman.d/mirrorlist
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/pacman.conf
@@ -75,7 +75,7 @@ mkdir /home/$username/virt_machines
 cd /home/$username
 git clone https://github.com/inox-vision/arch-install-scripts.git
 
-su - $username -c arch-install-scripts/3-user-part.sh
+
 
 
 
