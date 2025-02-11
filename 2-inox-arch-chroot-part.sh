@@ -72,9 +72,8 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 mkdir /home/$username/CLOUD
 mkdir /home/$username/virt_machines
-
-git clone https://github.com/inox-vision/arch-install-scripts.git /home/$username/
-
+cd /home/$username
+git clone https://github.com/inox-vision/arch-install-scripts.git
 
 su - $username -c arch-install-scripts/3-user-part.sh
 

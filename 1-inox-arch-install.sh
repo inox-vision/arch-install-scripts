@@ -21,9 +21,11 @@ echo -e "\n\ngenerating FSTAB\n\n"
 sleep 5
 genfstab -U /mnt >> /mnt/etc/fstab
 
-git clone https://github.com/inox-vision/arch-install-scripts.git /mnt
+cd /mnt
+git clone https://github.com/inox-vision/arch-install-scripts.git
+cd ..
 
-arch-chroot /mnt /bin/bash /mnt/arch-install-scripts/2-inox-arch-chroot-part.sh
+arch-chroot /mnt /bin/bash arch-install-scripts/2-inox-arch-chroot-part.sh
 
 
 
