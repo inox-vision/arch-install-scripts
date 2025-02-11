@@ -1,0 +1,91 @@
+
+mount glownej partycji pod/mnt
+tworzenie subvolumes
+	btrfs su cr /mnt/@
+	btrfs su cr /mnt/@home
+	btrfs su cr /mnt/@snapshots
+	btrfs su cr /mnt/@var_log
+
+	umount /mnt
+
+	mount -o defaults,noatime,autodefrag,compress=zstd,commit=120,subvol=@ /dev/vda3 /mnt
+
+stworzyć foldery pod /mnt/
+zamontować pozostałe subvolumes (home, snapshots...)
+
+zamontować /mnt/boot
+
+	pacstrap /mnt base linux linux-firmware btrfs-progs vi neovim
+
+	genfstab -U /mnt >> /mnt/etc/fstab
+
+	arch-chroot /mnt
+
+	ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
+
+hostname
+domain itp.
+
+edytować /etc/mkinitcpio.conf
+	dodać btrfs w MODULES
+
+	mkinitcpio -p linux
+
+zainstalować grub
+
+	systemctl enable NetworkManager
+
+	useradd -mG wheel {user}
+	passwd
+	
+	exit
+
+	umount -a
+
+pacman -S terminus-font
+
+-------------------
+-----SNAPPER-------
+-------------------
+
+	umount /.snapshots
+	rm -r /.snapshots
+	snapper -c root create-config /
+	btrfs subvolume delete /.snapshots (powstaje automatycznie przy tworzeniu konfiguracji)
+	mkdir /.snapshots
+	mount -a
+	chmod 750 /.snapshots
+
+	vim /etc/snapper/configs/{name}
+edit ALLOW_USERS
+lub dodać wheel do grup
+zmienić limity
+
+	systemctl enable snapper-timeline.timer
+	systemctl enable snapper-cleanup.timer
+
+sugerowane:
+btrfs subvolume set-default 256 
+
+
+-------------------
+---USAGE-----------
+-------------------
+
+ręczne tworzenie snapshotu:
+
+	snapper -c root create -d "{nazwa snapshota}"
+
+	snapper ls
+
+	snapper status 4..5 ( pokazuje co sie zmienilo miedzy snapami)
+
+	snapper undochange 4..5 ( przywraca stan z 5 na 4)
+
+	
+packages to install
+	btrfs-progs
+	grub-btrfs
+	snapper
+	snap-pac
+	snap-pac-grub
