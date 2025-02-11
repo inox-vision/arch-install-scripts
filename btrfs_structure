@@ -1,0 +1,10 @@
+/				@
+/.snapshots			@snapshots
+/home				@home
+/home/adrian/.cache 		@adrian_cache
+/home/adrian/.thunderbird	@adrian_thunderbird
+/home/adrian/Insync		@insync
+/home/adrian/media		@media
+/home/adrian/virt-machines	@virt_machines
+/home/adrian/vmware		@vmware
+/var/log			@var_log
