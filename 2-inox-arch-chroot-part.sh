@@ -3,6 +3,8 @@
 ###############
 # BASIC SETUP #
 ###############
+echo -e "\n\nBasic Setup - locale, hostname etc.\n\n"
+sleep 4
 
 ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 hwclock --systohc
@@ -17,6 +19,9 @@ echo $hostname > /etc/hostname
 echo "127.0.0.1		localhost
 ::1		localhost
 127.0.1.1	$hostname.localdomain		$hostname" >> /etc/hosts
+
+echo -e "\n\ndone\n\n"
+sleep 2
 
 ################
 # BASIC INSTAL #
@@ -35,21 +40,25 @@ INSTALL="
 	network-manager-applet
 	linux-headers
 	sudo
+	git
+	base-devel
 	"
 
-pacman -S $INSTALL
+pacman -S $INSTALL --noconfirm
+
+echo -e "\n\nInstalling and configuring GRUB\n\n"
+sleep 3
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
-
-systemctl enable lightdm.service
-systemctl enable NetworkManager
 
 
 ################
 #  USER SETUP  #
 ################
 
+echo -e "\n\nUser setup\n\n"
+sleep 3
 
 passwd
 echo -e "type in username.\n"
@@ -67,7 +76,7 @@ mkdir /home/$username/virt_machines
 git clone https://github.com/inox-vision/arch-install-scripts.git /home/$username/
 
 
-su - $username
+su - $username -c arch-install-scripts/3-user-part.sh
 
 
 

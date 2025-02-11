@@ -104,14 +104,14 @@ cd yay
 makepkg -si
 
 
-yay -S $Window_manager
-yay -S $BASIC_utils
-yay -S $SYSTEM_utils
-yay -S $THEMING
-yay -S $OTHER_apps
-yay -S $VIRTUAL_machines
-yay -S $SOUND
-yay -S $PRINTING
+yay -S $Window_manager --noconfirm
+yay -S $BASIC_utils --noconfirm
+yay -S $SYSTEM_utils --noconfirm
+yay -S $THEMING --noconfirm
+yay -S $OTHER_apps --noconfirm
+yay -S $VIRTUAL_machines --noconfirm
+yay -S $SOUND --noconfirm
+yay -S $PRINTING --noconfirm
 
 
 ######################
@@ -119,7 +119,8 @@ yay -S $PRINTING
 ######################
 
 
-
+sudo systemctl enable lightdm.service
+sudo systemctl enable NetworkManager
 sudo systemctl enable apparmor.service
 sudo systemctl enable firewalld.service
 sudo systemctl enable cups
