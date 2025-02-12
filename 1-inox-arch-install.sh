@@ -25,7 +25,7 @@ cd /mnt
 git clone https://github.com/inox-vision/arch-install-scripts.git
 cd ..
 
-arch-chroot /mnt /bin/bash arch-install-scripts/2-inox-arch-chroot-part.sh
+arch-chroot /mnt
 
 
 

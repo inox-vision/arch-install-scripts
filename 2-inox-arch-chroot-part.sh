@@ -70,10 +70,10 @@ passwd $username
 sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
-mkdir /home/$username/CLOUD
-mkdir /home/$username/virt_machines
 cd /home/$username
 git clone https://github.com/inox-vision/arch-install-scripts.git
+
+sudo systemctl enable NetworkManager
 
 
 

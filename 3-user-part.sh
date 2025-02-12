@@ -9,6 +9,7 @@ Window_manager="
 	picom
 	lightdm
 	lightdm-gtk-greeter
+	lightdm-gtk-greeter-settings
 	"
 
 BASIC_utils="
@@ -19,6 +20,7 @@ BASIC_utils="
 	xarchiver
 	p7zip
 	unzip
+	ranger
 	"
 
 SYSTEM_utils="
@@ -113,6 +115,9 @@ yay -S $VIRTUAL_machines --noconfirm
 yay -S $SOUND --noconfirm
 yay -S $PRINTING --noconfirm
 
+mkdir $HOME/CLOUD
+mkdir $HOME/virt_machines
+mkdir $HOME/Pictures
 
 ######################
 #  EABLING SERVICES  #
@@ -120,7 +125,6 @@ yay -S $PRINTING --noconfirm
 
 
 sudo systemctl enable lightdm.service
-sudo systemctl enable NetworkManager
 sudo systemctl enable apparmor.service
 sudo systemctl enable firewalld.service
 sudo systemctl enable cups
@@ -169,7 +173,6 @@ setxkbmap pl" > $HOME/.xprofile
  
 ## WALLPAPER
 
-mkdir $HOME/Pictures
 cp arch-install-scripts/wallpaperflare.com_wallpaper2.jpg $HOME/Pictures/wallpaperflare.com_wallpaper2.jpg
 echo "[xin_-1]
 file=$HOME/Pictures/wallpaperflare.com_wallpaper2.jpg
@@ -192,6 +195,22 @@ echo "<network>
   </ip>
 </network>" > $HOME/virt_machines/br.xml
 
+mkdir $HOME/.config/gtk-3.0
+echo "[Settings]
+gtk-theme-name=Breeze-Dark
+gtk-icon-theme-name=Adwaita
+gtk-font-name=Noto Sans 11
+gtk-cursor-theme-name=Adwaita
+gtk-cursor-theme-size=0
+gtk-toolbar-style=GTK_TOOLBAR_BOTH
+gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-button-images=1
+gtk-menu-images=1
+gtk-enable-event-sounds=1
+gtk-enable-input-feedback-sounds=1
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle=hintfull" > $HOME/.config/gtk-3.0/settings.ini
 
 ## QTILE
 
