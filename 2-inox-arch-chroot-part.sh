@@ -73,7 +73,7 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 cd /home/$username
 git clone https://github.com/inox-vision/arch-install-scripts.git
 
-sudo systemctl enable NetworkManager
+systemctl enable NetworkManager
 
 
 
